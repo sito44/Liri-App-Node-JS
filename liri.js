@@ -57,13 +57,31 @@ inquirer.prompt([{
                 let params = song;
                 params.type = 'track';
                 params.limit = '1';
+                console.log(params);
+                if (params.query === '') {
+                    params.query = 'The Sign';
+                }
 
                 spotify.search(params , function(err, data) {
                     if (err) {
                         return console.log('Error occurred: ' + err);
                     }
 
-                    console.log(JSON.stringify(data).split(','));
+                    let song = JSON.stringify(data).split(',');
+                    console.log(data);
+                    
+                    /*song.forEach(function(songData){
+                        let spaced = "\n" + songData;
+                        console.log(spaced);
+                    });*/
+                    // artist name
+                    console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
+                    // album name
+                    console.log("Album Title: " + data.tracks.items[0].album.name);
+                    // Link
+                    console.log("Link: " + data.tracks.items[0].album.href);
+                    // track name
+                    console.log("Song Name: " + data.tracks.items[0].name);
 
                 });
             });
