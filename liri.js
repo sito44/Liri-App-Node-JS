@@ -113,7 +113,7 @@ function songSearch(searchTerm) {
 			params.type = 'track';
 			params.limit = '1';
 			if (params.query === '') {
-				params.query = 'The Sign';
+				params.query = 'The Sign by Ace of Base';
 			}
 
 			spotify.search(params, (err, data) => {
@@ -121,7 +121,7 @@ function songSearch(searchTerm) {
 				let songData =
 					'Artist: ' + data.tracks.items[0].album.artists[0].name + '\n' +
 					'Album Title: ' + data.tracks.items[0].album.name + '\n' +
-					'Link: ' + data.tracks.items[0].album.href + '\n' +
+					'Link: ' + data.tracks.items[0].album.external_urls.spotify + '\n' +
 					'Song Name: ' + data.tracks.items[0].name;
 				console.log(songData);
 				logSearch(songData);
@@ -139,7 +139,7 @@ function songSearch(searchTerm) {
 			let songData =
 				'Artist: ' + data.tracks.items[0].album.artists[0].name + '\n' +
 				'Album Title: ' + data.tracks.items[0].album.name + '\n' +
-				'Link: ' + data.tracks.items[0].album.href + '\n' +
+				'Link: ' + data.tracks.items[0].album.external_urls.spotify + '\n' +
 				'Song Name: ' + data.tracks.items[0].name;
 			console.log(songData);
 			logSearch(songData);
@@ -202,10 +202,8 @@ function movieSearch(searchTerm) {
 function textFileRead() {
 	fs.readFile('random.txt', (err, data) => {
 		if (err) throw err;
-		console.log(data.toString().indexOf('"'));
 		let txtData = data.toString();
 		let command = txtData.slice(0, txtData.indexOf(','));
-		console.log(command);
 		let searchTerm = txtData.slice(txtData.indexOf('"') + 1, txtData.lastIndexOf('"'));
 		switch (command) {
 		case 'my-tweets':
@@ -226,7 +224,7 @@ function textFileRead() {
 
 function logSearch(searchData) {
 	let logDate = new Date();
-	fs.appendFile('log.txt','\n' + 'LOG DATE: ' + '{{{' + logDate + '}}}' + '\n' + searchData + '\n', (err) => {
+	fs.appendFile('log.txt', '\n' + 'LOG DATE: ' + '{{{' + logDate + '}}}' + '\n' + searchData + '\n', (err) => {
 		if (err) throw err;
 		console.log('The search Data was appended to log.txt');
 	});
