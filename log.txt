@@ -1,0 +1,77 @@
+
+LOG DATE: {{{Thu Jan 25 2018 17:09:23 GMT-0800 (PST)}}}
+
+--------------------------------
+🎹🥁🎸🎧
+Thu Jan 25 03:40:23 +0000 2018
+--------------------------------,
+--------------------------------
+need to get back on the field ⚽️
+Thu Jan 25 03:05:18 +0000 2018
+--------------------------------,
+--------------------------------
+sabe e lee is for meee 🍜
+Thu Jan 25 02:01:04 +0000 2018
+--------------------------------,
+--------------------------------
+bundle of orphan socks..
+Thu Jan 25 01:57:12 +0000 2018
+--------------------------------,
+--------------------------------
+The balance between the left and right brain is the crisis of our eon...
+Thu Jan 25 01:52:12 +0000 2018
+--------------------------------,
+--------------------------------
+Lovin Node.js
+Thu Jan 25 01:44:08 +0000 2018
+--------------------------------,
+--------------------------------
+tweeeet tweeeeeet
+Mon Jan 22 04:42:27 +0000 2018
+--------------------------------,
+--------------------------------
+test Tweeeter go!
+Wed Jan 17 01:08:27 +0000 2018
+--------------------------------
+
+LOG DATE: {{{Thu Jan 25 2018 17:10:03 GMT-0800 (PST)}}}
+Artist: The Doors
+Album Title: L.A. Woman
+Link: https://api.spotify.com/v1/albums/7IKUTIc9UWuVngyGPtqNHS
+Song Name: Riders On The Storm
+
+LOG DATE: {{{Thu Jan 25 2018 17:10:45 GMT-0800 (PST)}}}
+Title: Donnie Darko
+Year: 2001
+imdbRating: 8.1
+RottenTomatoes: 86%
+Country of Production: USA
+Language: English
+Plot: A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes, after he narrowly escapes a bizarre accident.
+Actors: Jake Gyllenhaal, Holmes Osborne, Maggie Gyllenhaal, Daveigh Chase
+
+LOG DATE: {{{Thu Jan 25 2018 17:12:13 GMT-0800 (PST)}}}
+Title: Ghost in the Shell
+Year: 2017
+imdbRating: 6.4
+RottenTomatoes: 45%
+Country of Production: UK, China, India, Hong Kong, USA
+Language: English, Japanese
+Plot: In the near future, Major is the first of her kind: A human saved from a terrible crash, who is cyber-enhanced to be a perfect soldier devoted to stopping the world's most dangerous criminals.
+Actors: Scarlett Johansson, Pilou Asbæk, Takeshi Kitano, Juliette Binoche
+
+LOG DATE: {{{Thu Jan 25 2018 17:14:30 GMT-0800 (PST)}}}
+Artist: Ty Dolla $ign
+Album Title: Or Nah (feat. The Weeknd, Wiz Khalifa and DJ Mustard) [Remix Version]
+Link: https://api.spotify.com/v1/albums/3SHx7bBQFI4J8QRr6D5cOK
+Song Name: Or Nah (feat. The Weeknd, Wiz Khalifa and DJ Mustard) - Remix
+
+LOG DATE: {{{Thu Jan 25 2018 17:14:46 GMT-0800 (PST)}}}
+Title: Mr. Nobody
+Year: 2009
+imdbRating: 7.9
+RottenTomatoes: 66%
+Country of Production: Belgium, Germany, Canada, France, USA, UK
+Language: English, Mohawk
+Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham

@@ -42,24 +42,34 @@ inquirer.prompt([{
 });
 
 function tweetSearch(searchTerm) {
-	
+
 	if (searchTerm === undefined) {
 		inquirer.prompt([{
 			type: 'input',
 			message: 'Enter your Twitter Screen Name',
 			name: 'screen_name'
-		}]).then(function (screenName) {
+		}]).then((screenName) => {
 			let params = screenName;
 			params.count = '20';
 
 
-			client.get('statuses/user_timeline', params, function (error, tweets, response) {
+			client.get('statuses/user_timeline', params, (error, tweets, response) => {
 				if (error) throw error;
+				let tweetsArray = [];
 				for (var i = 0; i < tweets.length; i++) {
-					console.log(tweets[i].text);
-					console.log(tweets[i].created_at);
+
+					let tweet =
+						'\n' + '--------------------------------' + '\n' +
+						tweets[i].text + '\n' +
+						tweets[i].created_at + '\n' +
+						'--------------------------------';
+					console.log(tweet);
+					tweetsArray.push(tweet);
+
 				}
 
+				let tweetLog = tweetsArray.join(',');
+				logSearch(tweetLog);
 			});
 
 		});
@@ -70,72 +80,123 @@ function tweetSearch(searchTerm) {
 		};
 
 
-		client.get('statuses/user_timeline', params, function (error, tweets, response) {
+		client.get('statuses/user_timeline', params, (error, tweets, response) => {
 			if (error) throw error;
+			let tweetsArray = [];
 			for (var i = 0; i < tweets.length; i++) {
-				console.log(tweets[i].text);
-				console.log(tweets[i].created_at);
+
+				let tweet =
+					'--------------------------------' + '\n' +
+					tweets[i].text + '\n' +
+					tweets[i].created_at + '\n' +
+					'--------------------------------' + '\n';
+				console.log(tweet);
+				tweetsArray.push(tweet);
+
 			}
+
+			let tweetLog = tweetsArray.join(',');
+			logSearch(tweetLog);
 
 		});
 	}
 }
 
-function songSearch() {
-	inquirer.prompt([{
-		type: 'input',
-		message: 'Enter a song name for details',
-		name: 'query'
-	}]).then(function (song) {
-		let params = song;
-		params.type = 'track';
-		params.limit = '1';
-		if (params.query === '') {
-			params.query = 'The Sign';
-		}
+function songSearch(searchTerm) {
+	if (searchTerm === undefined) {
+		inquirer.prompt([{
+			type: 'input',
+			message: 'Enter a song name for details',
+			name: 'query'
+		}]).then((song) => {
+			let params = song;
+			params.type = 'track';
+			params.limit = '1';
+			if (params.query === '') {
+				params.query = 'The Sign';
+			}
 
-		spotify.search(params, function (err, data) {
+			spotify.search(params, (err, data) => {
+				if (err) throw err;
+				let songData =
+					'Artist: ' + data.tracks.items[0].album.artists[0].name + '\n' +
+					'Album Title: ' + data.tracks.items[0].album.name + '\n' +
+					'Link: ' + data.tracks.items[0].album.href + '\n' +
+					'Song Name: ' + data.tracks.items[0].name;
+				console.log(songData);
+				logSearch(songData);
+
+			});
+		});
+	} else {
+		let params = {
+			query: searchTerm,
+			type: 'track',
+			limit: '1'
+		};
+		spotify.search(params, (err, data) => {
 			if (err) throw err;
-
-			// artist name
-			console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
-			// album name
-			console.log('Album Title: ' + data.tracks.items[0].album.name);
-			// Link
-			console.log('Link: ' + data.tracks.items[0].album.href);
-			// track name
-			console.log('Song Name: ' + data.tracks.items[0].name);
+			let songData =
+				'Artist: ' + data.tracks.items[0].album.artists[0].name + '\n' +
+				'Album Title: ' + data.tracks.items[0].album.name + '\n' +
+				'Link: ' + data.tracks.items[0].album.href + '\n' +
+				'Song Name: ' + data.tracks.items[0].name;
+			console.log(songData);
+			logSearch(songData);
 
 		});
-	});
+	}
 }
 
-function movieSearch() {
-	inquirer.prompt([{
-		type: 'input',
-		message: 'Enter a movie for details',
-		name: 't'
-	}]).then(function (movie) {
-		let params = movie;
-		if (params.t === '') {
-			params.t = 'Mr Nobody';
-		}
-		request('http://www.omdbapi.com/?apikey=trilogy&t=' + params.t, function (error, response, body) {
-			if (error) throw error;
-			//console.log(JSON.stringify(response).split(','));
-			let movieData = JSON.parse(body);
-			console.log(
-				'Title: ' + movieData.Title + '\n' +
-                'Year: ' + movieData.Year + '\n' +
-                'imdbRating: ' + movieData.imdbRating + '\n' +
-                'RottenTomatoes: ' + movieData.Ratings[1].Value + '\n' +
-                'Country of Production: ' + movieData.Country + '\n' +
-                'Language: ' + movieData.Language + '\n' +
-                'Plot: ' + movieData.Plot + '\n' +
-                'Actors: ' + movieData.Actors
-			);
+function movieSearch(searchTerm) {
+	if (searchTerm === undefined) {
+		inquirer.prompt([{
+			type: 'input',
+			message: 'Enter a movie for details',
+			name: 't'
+		}]).then((movie) => {
+			let params = movie;
+			if (params.t === '') {
+				params.t = 'Mr Nobody';
+			}
+			request('http://www.omdbapi.com/?apikey=trilogy&t=' + params.t, (error, response, body) => {
+				if (error) throw error;
+				let movieData = JSON.parse(body);
+				let movieString =
+					'Title: ' + movieData.Title + '\n' +
+					'Year: ' + movieData.Year + '\n' +
+					'imdbRating: ' + movieData.imdbRating + '\n' +
+					'RottenTomatoes: ' + movieData.Ratings[1].Value + '\n' +
+					'Country of Production: ' + movieData.Country + '\n' +
+					'Language: ' + movieData.Language + '\n' +
+					'Plot: ' + movieData.Plot + '\n' +
+					'Actors: ' + movieData.Actors;
+
+				console.log(movieString);
+				logSearch(movieString);
+			});
 		});
-	});
+	} else {
+		let params = {
+			t: searchTerm
+		};
+		request('http://www.omdbapi.com/?apikey=trilogy&t=' + params.t, (error, response, body) => {
+			if (error) throw error;
+			let movieData = JSON.parse(body);
+			let movieString =
+				'Title: ' + movieData.Title + '\n' +
+				'Year: ' + movieData.Year + '\n' +
+				'imdbRating: ' + movieData.imdbRating + '\n' +
+				'RottenTomatoes: ' + movieData.Ratings[1].Value + '\n' +
+				'Country of Production: ' + movieData.Country + '\n' +
+				'Language: ' + movieData.Language + '\n' +
+				'Plot: ' + movieData.Plot + '\n' +
+				'Actors: ' + movieData.Actors;
+
+			console.log(movieString);
+			logSearch(movieString);
+		});
+	}
 }
 
 function textFileRead() {
@@ -147,13 +208,26 @@ function textFileRead() {
 		console.log(command);
 		let searchTerm = txtData.slice(txtData.indexOf('"') + 1, txtData.lastIndexOf('"'));
 		switch (command) {
-		case "my-tweets":
+		case 'my-tweets':
 			tweetSearch(searchTerm);
 			break;
-        
+		case 'spotify-this-song':
+			songSearch(searchTerm);
+			break;
+		case 'movie-this':
+			movieSearch(searchTerm);
+			break;
 		default:
+			console.log('command not specified in random.txt');
 			break;
 		}
 	});
 }
 
+function logSearch(searchData) {
+	let logDate = new Date();
+	fs.appendFile('log.txt','\n' + 'LOG DATE: ' + '{{{' + logDate + '}}}' + '\n' + searchData + '\n', (err) => {
+		if (err) throw err;
+		console.log('The search Data was appended to log.txt');
+	});
+}
