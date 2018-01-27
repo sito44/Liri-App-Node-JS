@@ -1,6 +1,6 @@
 # Liri-App-Node-JS
 
-![Image of Liri Bot]
+[Image of Liri Bot]
 (http://www.pvhc.net/img27/awbgpcfkuwxixldjoown.png)
 
 ## Description
